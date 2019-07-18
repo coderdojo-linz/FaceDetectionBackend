@@ -34,8 +34,9 @@ async function run() {
     if (!faceapi.nets.tinyFaceDetector.params) {
         await faceapi.nets.tinyFaceDetector.load('/weights/');
     }
-        await faceapi.loadFaceLandmarkTinyModel('/weights/');
-        await faceapi.loadFaceExpressionModel('/weights/');
+    
+    await faceapi.loadFaceLandmarkTinyModel('/weights/');
+    await faceapi.loadFaceExpressionModel('/weights/');
 
     // Try to access users webcam and stream the images to the video element
     const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
@@ -51,12 +52,13 @@ async function onPlay() {
     }
 
     let result;
+    const detection = faceapi.detectSingleFace(videoEl, options);
     if (comboBoxValue === 'faceDetection') {
-        result = await faceapi.detectSingleFace(videoEl, options);
+        result = await detection;
     } else if (comboBoxValue === 'faceDetectionWithLandmarks') {
-        result = await faceapi.detectSingleFace(videoEl, options).withFaceLandmarks(true);
+        result = await detection.withFaceLandmarks(true);
     } else {
-        result = await faceapi.detectSingleFace(videoEl, options).withFaceExpressions();
+        result = await detection.withFaceExpressions();
     }
 
     if (result) {
