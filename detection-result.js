@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000/');//expression
+const socket = io('http://192.168.42.124:3000/');//expression
 
 window.onload = () => {
     socket.on('detection', function (msg) {
