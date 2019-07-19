@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Face Detection</title>
-
-    <script src="node_modules/face-api.js/dist/face-api.js"></script>
-    <script src="dontLaughChallenge.js"></script>
-    <link rel="stylesheet" href="face-detection.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="detection-result.js"></script>
+    <link rel="stylesheet" href="dontLaughChallenge.css">
 </head>
-<body>
-    <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted ></video> <br>
-    
-    <h1 id="Lachometer"></h1>
-    
-    <canvas id="overlay" />
 
-    
+<body>
+    <h2 id="x">Lachometer: <span id='lachometer'></span></h2>
+    <img id="gif">
 </body>
+
 </html>
