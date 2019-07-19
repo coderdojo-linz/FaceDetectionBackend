@@ -106,7 +106,7 @@ window.onload = () => {
                         var giphys = document.getElementById('gif');
                         giphys.src = "/Giphys/image.png";
 
-                        counter = 1;
+                        counter++;
                         break;
 
                     case 11:
