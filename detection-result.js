@@ -26,7 +26,7 @@ window.onload = () => {
             //encrease timer
             timer++;
 
-            if (timer > 13) {
+            if (timer > 1) {
                 timer = 0;
                 console.log(counter);
                 switch (counter) {
@@ -36,12 +36,12 @@ window.onload = () => {
                         giphys.style.width = "30%";
                         document.body.appendChild(giphys);
 
-                        counter += 2;
+                        counter++;
                         break;
 
                     case 1:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/glory.gif";
+                        giphys.src = "/Giphys/stracheGTA.jpg";
 
                         counter++;
                         break;
