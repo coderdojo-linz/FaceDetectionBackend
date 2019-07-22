@@ -7,6 +7,7 @@ body{
 
 #x{
     font-size: 1.8rem;
+<<<<<<< HEAD
 }
 
 #temp{
@@ -27,3 +28,7 @@ body{
     top: 2rem;
 }
 
+=======
+    margin-top: -100px;
+}
+>>>>>>> 30dfefd453e7d832484ce5b0bbf859a270b060ee
