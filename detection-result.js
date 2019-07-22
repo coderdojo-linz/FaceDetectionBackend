@@ -21,7 +21,10 @@ window.onload = () => {
             //show Lachometer
             const lachometer = document.getElementById('lachometer');
             let happyValue = msg.expressions.happy * 100;
-            lachometer.innerText = `${Math.round(happyValue)} %`
+            lachometer.innerText = `${Math.round(happyValue)} %`;
+
+            var perCent = document.getElementById('percent');
+            perCent.style.width = happyValue + "%";
 
             //encrease timer
             timer++;
@@ -33,15 +36,14 @@ window.onload = () => {
                     case 0:
                         var giphys = document.getElementById("gif");
                         giphys.src = "/Giphys/glory.gif";
-                        giphys.style.width = "30%";
                         document.body.appendChild(giphys);
 
-                        counter += 2;
+                        counter++;
                         break;
 
                     case 1:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/glory.gif";
+                        giphys.src = "/Giphys/car-strache.png";
 
                         counter++;
                         break;
@@ -69,7 +71,7 @@ window.onload = () => {
 
                     case 5:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/image (1).png";
+                        giphys.src = "/Giphys/p1.png";
 
                         counter++;
                         break;
@@ -104,7 +106,7 @@ window.onload = () => {
 
                     case 10:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/image.png";
+                        giphys.src = "/Giphys/trump.png";
 
                         counter++;
                         break;
@@ -118,7 +120,7 @@ window.onload = () => {
 
                     case 12:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/run-cat-run-gif";
+                        giphys.src = "/Giphys/run-cat-run.gif";
 
                         counter++;
                         break;
@@ -150,12 +152,36 @@ window.onload = () => {
 
                         counter++;
                         break;
-
                     case 17:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = "/Giphys/anoying-cat.jpg";
+    
+                        counter++;
+                        break;
+                    case 18:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = "/Giphys/cat.jpg";
+
+                        counter++;
+                        break;
+                    case 19:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = "/Giphys/stealing-cat.gif";
+
+                        counter++;
+                        break;
+                    case 20:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = "/Giphys/wiggly-cat.gif";
+
+                        counter++;
+                        break;
+
+                    case 21:
                         var giphys = document.getElementById('gif');
                         giphys.src = "/Giphys/neverending.gif";
 
-                        counter = 1;
+                        counter = 0;
                         break;
                 }
             }
@@ -163,16 +189,21 @@ window.onload = () => {
             //check how happy you are
             if (happyValue < 25) {
                 lachometer.style.color = 'lightgreen';
+                perCent.style.backgroundColor = 'lightgreen';
             } else if (happyValue < 50) {
                 lachometer.style.color = 'darkgreen';
+                perCent.style.backgroundColor = 'darkgreen';
             } else if (happyValue < 75) {
                 lachometer.style.color = 'yellow';
+                perCent.style.backgroundColor = 'yellow';
             } else if (happyValue < 98) {
                 lachometer.style.color = 'red';
+                perCent.style.backgroundColor = 'red';
             } else {
                 const x = document.getElementById('x');
                 x.innerText = 'Verloren';
                 x.style.color = 'red';
+                perCent.style.backgroundColor = 'red';
             }
         }
     });
