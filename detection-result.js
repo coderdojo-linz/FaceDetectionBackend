@@ -32,10 +32,11 @@ window.onload = () => {
             if (timer > 13) {
                 timer = 0;
                 console.log(counter);
+                const baseUrl = 'https://cddataexchange.blob.core.windows.net/data-exchange';
                 switch (counter) {
                     case 0:
                         var giphys = document.getElementById("gif");
-                        giphys.src = "/Giphys/glory.gif";
+                        giphys.src = baseUrl + "/Giphys/glory.gif";
                         document.body.appendChild(giphys);
 
                         counter++;
@@ -43,143 +44,143 @@ window.onload = () => {
 
                     case 1:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/car-strache.png";
+                        giphys.src = baseUrl + "/Giphys/car-strache.png";
 
                         counter++;
                         break;
 
                     case 2:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/fair-use-meme.jpg";
+                        giphys.src = baseUrl + "/Giphys/fair-use-meme.jpg";
 
                         counter++;
                         break;
 
                     case 3:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/laser-cat.gif";
+                        giphys.src = baseUrl + "/Giphys/laser-cat.gif";
 
                         counter++;
                         break;
 
                     case 4:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/not-amused-cat.gif";
+                        giphys.src = baseUrl + "/Giphys/not-amused-cat.gif";
 
                         counter++;
                         break;
 
                     case 5:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/p1.png";
+                        giphys.src = baseUrl + "/Giphys/p1.png";
 
                         counter++;
                         break;
 
                     case 6:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/alf.gif";
+                        giphys.src = baseUrl + "/Giphys/alf.gif";
 
                         counter++;
                         break;
 
                     case 7:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/black-hole.jpg";
+                        giphys.src = baseUrl + "/Giphys/black-hole.jpg";
 
                         counter++;
                         break;
 
                     case 8:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/cat1.png";
+                        giphys.src = baseUrl + "/Giphys/cat1.png";
 
                         counter++;
                         break;
 
                     case 9:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/catfish.gif";
+                        giphys.src = baseUrl + "/Giphys/catfish.gif";
 
                         counter++;
                         break;
 
                     case 10:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/trump.png";
+                        giphys.src = baseUrl + "/Giphys/trump.png";
 
                         counter++;
                         break;
 
                     case 11:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/p2.png";
+                        giphys.src = baseUrl + "/Giphys/p2.png";
 
                         counter++;
                         break;
 
                     case 12:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/run-cat-run.gif";
+                        giphys.src = baseUrl + "/Giphys/run-cat-run.gif";
 
                         counter++;
                         break;
 
                     case 13:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/scarder-cat.gif";
+                        giphys.src = baseUrl + "/Giphys/scarder-cat.gif";
 
                         counter++;
                         break;
 
                     case 14:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/strache-arbeitslos.jpg";
+                        giphys.src = baseUrl + "/Giphys/strache-arbeitslos.jpg";
 
                         counter++;
                         break;
 
                     case 15:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/stracheGTA.jpg";
+                        giphys.src = baseUrl + "/Giphys/stracheGTA.jpg";
 
                         counter++;
                         break;
 
                     case 16:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/crash-cat.gif";
+                        giphys.src = baseUrl + "/Giphys/crash-cat.gif";
 
                         counter++;
                         break;
                     case 17:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/anoying-cat.jpg";
+                        giphys.src = baseUrl + "/Giphys/anoying-cat.jpg";
     
                         counter++;
                         break;
                     case 18:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/cat.jpg";
+                        giphys.src = baseUrl + "/Giphys/cat.jpg";
 
                         counter++;
                         break;
                     case 19:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/stealing-cat.gif";
+                        giphys.src = baseUrl + "/Giphys/stealing-cat.gif";
 
                         counter++;
                         break;
                     case 20:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/wiggly-cat.gif";
+                        giphys.src = baseUrl + "/Giphys/wiggly-cat.gif";
 
                         counter++;
                         break;
 
                     case 21:
                         var giphys = document.getElementById('gif');
-                        giphys.src = "/Giphys/neverending.gif";
+                        giphys.src = baseUrl + "/Giphys/neverending.gif";
 
                         counter = 0;
                         break;
