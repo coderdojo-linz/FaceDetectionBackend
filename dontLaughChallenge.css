@@ -2,8 +2,28 @@ body{
     text-align: center;
     position: relative;
     top: 10rem;
+    text-align: center;
 }
 
 #x{
     font-size: 1.8rem;
 }
+
+#temp{
+   position: relative;
+   top: 10;
+   height: 40px;
+   width: 30%;
+   left: 35%;
+   text-align: center;
+}
+
+#percent{
+    height: 40px;
+}
+
+#gif{
+    position: relative;
+    top: 2rem;
+}
+

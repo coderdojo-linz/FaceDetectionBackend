@@ -21,7 +21,10 @@ window.onload = () => {
             //show Lachometer
             const lachometer = document.getElementById('lachometer');
             let happyValue = msg.expressions.happy * 100;
-            lachometer.innerText = `${Math.round(happyValue)} %`
+            lachometer.innerText = `${Math.round(happyValue)} %`;
+
+            var perCent = document.getElementById('percent');
+            perCent.style.width = happyValue + "%";
 
             //encrease timer
             timer++;
@@ -163,16 +166,21 @@ window.onload = () => {
             //check how happy you are
             if (happyValue < 25) {
                 lachometer.style.color = 'lightgreen';
+                perCent.style.backgroundColor = 'lightgreen';
             } else if (happyValue < 50) {
                 lachometer.style.color = 'darkgreen';
+                perCent.style.backgroundColor = 'darkgreen';
             } else if (happyValue < 75) {
                 lachometer.style.color = 'yellow';
+                perCent.style.backgroundColor = 'yellow';
             } else if (happyValue < 98) {
                 lachometer.style.color = 'red';
+                perCent.style.backgroundColor = 'red';
             } else {
                 const x = document.getElementById('x');
                 x.innerText = 'Verloren';
                 x.style.color = 'red';
+                perCent.style.backgroundColor = 'red';
             }
         }
     });
