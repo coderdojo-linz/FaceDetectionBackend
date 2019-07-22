@@ -32,11 +32,11 @@ window.onload = () => {
 async function run() {
     // Load face detection model
     if (!faceapi.nets.tinyFaceDetector.params) {
-        await faceapi.nets.tinyFaceDetector.load('/weights/');
+        await faceapi.nets.tinyFaceDetector.load('https://cddataexchange.blob.core.windows.net/data-exchange/face-detection-weights/');
     }
     
-    await faceapi.loadFaceLandmarkTinyModel('/weights/');
-    await faceapi.loadFaceExpressionModel('/weights/');
+    await faceapi.loadFaceLandmarkTinyModel('https://cddataexchange.blob.core.windows.net/data-exchange/face-detection-weights/');
+    await faceapi.loadFaceExpressionModel('https://cddataexchange.blob.core.windows.net/data-exchange/face-detection-weights/');
 
     // Try to access users webcam and stream the images to the video element
     const stream = await navigator.mediaDevices.getUserMedia({ video: {} });

@@ -1,0 +1,8 @@
+Giphys
+Scratch
+.gitignore
+.dockerignore
+Dockerfile
+weights
+detection.json
+.git
