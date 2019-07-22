@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-const socket = io('http://192.168.42.124:3000/');//expression
 const socket = io('http://localhost:3000/');
 
 var timer = 50;
 var counter = 0;
->>>>>>> 6ca1be4091fcff39d895b2928ccf808003f72156
 
 window.onload = () => {
     socket.on('detection', function (msg) {
