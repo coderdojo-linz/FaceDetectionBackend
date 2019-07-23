@@ -13,9 +13,5 @@ window.onload = () => {
             const pid = document.getElementById('player-id');
             pid.innerText = msg.player;
         }
-
-        if (document.getElementById('highscoreList')) {
-            showHighscores();
-        }
     });
 }
