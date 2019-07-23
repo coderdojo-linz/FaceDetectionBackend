@@ -1,54 +1,211 @@
-let videoEl;
-let canvasEl;
-let lachometerEl;
+const socket = io();
 
-// Define detection options
-const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 512, scoreThreshold: 0.5 });
-
-// Get socket.io object. Learn more at https://socket.io
-//const socket = io();
-
+var timer = 50;
+var counter = 0;
 
 window.onload = () => {
-    // Get references to HTML elements
-    videoEl = document.getElementById('inputVideo');
-    canvasEl = document.getElementById('overlay');
-    lachometerEl = document.getElementById('lachometer');
+    socket.on('detection', function (msg) {
+        msg = JSON.parse(msg);
 
-    run();
-};
+        if (document.getElementById('position')) {
+            const position = document.getElementById('position');
+            position.innerText = `${Math.round(msg.detection._box._x)}/${Math.round(msg.detection._box._y)}`;
+        }
 
-async function run() {
-    // Load face detection model
-    if (!faceapi.nets.tinyFaceDetector.params) {
-        await faceapi.nets.tinyFaceDetector.load('/weights/');
-    }
-    await faceapi.loadFaceExpressionModel('/weights/');
+        if (document.getElementById('player-id')) {
+            const pid = document.getElementById('player-id');
+            pid.innerText = msg.player;
+        }
 
-    // Try to access users webcam and stream the images to the video element
-    const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
-    videoEl.srcObject = stream;
-}
+        if (document.getElementById('lachometer')) {
+            //show Lachometer
+            const lachometer = document.getElementById('lachometer');
+            let happyValue = msg.expressions.happy * 100;
+            lachometer.innerText = `${Math.round(happyValue)} %`;
 
-async function onPlay() {
-    // Check if model has already been loaded. If not, wait a little bit and try again
-    if (videoEl.paused || videoEl.ended || !faceapi.nets.tinyFaceDetector.params) {
-        return setTimeout(() => onPlay(), 250);
-    }
+            var perCent = document.getElementById('percent');
+            perCent.style.width = happyValue + "%";
 
-    const result = await faceapi.detectSingleFace(videoEl, options).withFaceExpressions();
+            //encrease timer
+            timer++;
 
-    if (result) {
-        dims = faceapi.matchDimensions(canvasEl, videoEl, true);
+            if (timer > 13) {
+                timer = 0;
+                console.log(counter);
+                const baseUrl = 'https://cddataexchange.blob.core.windows.net/data-exchange';
+                switch (counter) {
+                    case 0:
+                        var giphys = document.getElementById("gif");
+                        giphys.src = baseUrl + "/Giphys/glory.gif";
+                        document.body.appendChild(giphys);
 
-        //Draw result
-        const resizedResult = faceapi.resizeResults(result, dims);
-        faceapi.draw.drawDetections(canvasEl, resizedResult);
+                        counter++;
+                        break;
 
-        const minConfidence = 0.05;
-        faceapi.draw.drawFaceExpressions(canvasEl, resizedResult, minConfidence);
-    }
+                    case 1:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/car-strache.png";
 
-    // Schedule next detection
-    setTimeout(() => onPlay());
+                        counter++;
+                        break;
+
+                    case 2:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/fair-use-meme.jpg";
+
+                        counter++;
+                        break;
+
+                    case 3:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/laser-cat.gif";
+
+                        counter++;
+                        break;
+
+                    case 4:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/not-amused-cat.gif";
+
+                        counter++;
+                        break;
+
+                    case 5:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/p1.png";
+
+                        counter++;
+                        break;
+
+                    case 6:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/alf.gif";
+
+                        counter++;
+                        break;
+
+                    case 7:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/black-hole.jpg";
+
+                        counter++;
+                        break;
+
+                    case 8:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/cat1.png";
+
+                        counter++;
+                        break;
+
+                    case 9:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/catfish.gif";
+
+                        counter++;
+                        break;
+
+                    case 10:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/trump.png";
+
+                        counter++;
+                        break;
+
+                    case 11:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/p2.png";
+
+                        counter++;
+                        break;
+
+                    case 12:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/run-cat-run.gif";
+
+                        counter++;
+                        break;
+
+                    case 13:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/scarder-cat.gif";
+
+                        counter++;
+                        break;
+
+                    case 14:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/strache-arbeitslos.jpg";
+
+                        counter++;
+                        break;
+
+                    case 15:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/stracheGTA.jpg";
+
+                        counter++;
+                        break;
+
+                    case 16:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/crash-cat.gif";
+
+                        counter++;
+                        break;
+                    case 17:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/anoying-cat.jpg";
+    
+                        counter++;
+                        break;
+                    case 18:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/cat.jpg";
+
+                        counter++;
+                        break;
+                    case 19:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/stealing-cat.gif";
+
+                        counter++;
+                        break;
+                    case 20:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/wiggly-cat.gif";
+
+                        counter++;
+                        break;
+
+                    case 21:
+                        var giphys = document.getElementById('gif');
+                        giphys.src = baseUrl + "/Giphys/neverending.gif";
+
+                        counter = 0;
+                        break;
+                }
+            }
+
+            //check how happy you are
+            if (happyValue < 25) {
+                lachometer.style.color = 'lightgreen';
+                perCent.style.backgroundColor = 'lightgreen';
+            } else if (happyValue < 50) {
+                lachometer.style.color = 'darkgreen';
+                perCent.style.backgroundColor = 'darkgreen';
+            } else if (happyValue < 75) {
+                lachometer.style.color = 'yellow';
+                perCent.style.backgroundColor = 'yellow';
+            } else if (happyValue < 98) {
+                lachometer.style.color = 'red';
+                perCent.style.backgroundColor = 'red';
+            } else {
+                const x = document.getElementById('x');
+                x.innerText = 'Verloren';
+                x.style.color = 'red';
+                perCent.style.backgroundColor = 'red';
+            }
+        }
+    });
 }
