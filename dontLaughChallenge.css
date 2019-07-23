@@ -7,7 +7,6 @@ body{
 
 #x{
     font-size: 1.8rem;
-<<<<<<< HEAD
 }
 
 #temp{
@@ -21,14 +20,17 @@ body{
 
 #percent{
     height: 40px;
+    padding-top: 20px;
 }
 
 #gif{
     position: relative;
-    top: 2rem;
+    top: 3.4rem;
 }
 
-=======
-    margin-top: -100px;
+#highscoreList {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
->>>>>>> 30dfefd453e7d832484ce5b0bbf859a270b060ee
+

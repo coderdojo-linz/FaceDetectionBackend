@@ -1,7 +1,20 @@
 const socket = io();
 
-var timer = 50;
+
+var dateStart = new Date();
+
+var timeStart = dateStart.getTime();
+var timer = dateStart.getTime() - 3000;
 var counter = 0;
+
+//list of the best players, first variable: name, secound variable: secounds
+var highscores = [
+    ["temp", 0.0],
+    ["temp", 0.0],
+    ["temp", 0.0],
+    ["temp", 0.0],
+    ["temp", 0.0]
+];
 
 window.onload = () => {
     socket.on('detection', function (msg) {
@@ -17,6 +30,11 @@ window.onload = () => {
             pid.innerText = msg.player;
         }
 
+        if (document.getElementById('highscoreList')) {
+            //show Highscores
+            showHighscores();
+        }
+
         if (document.getElementById('lachometer')) {
             //show Lachometer
             const lachometer = document.getElementById('lachometer');
@@ -26,11 +44,10 @@ window.onload = () => {
             var perCent = document.getElementById('percent');
             perCent.style.width = happyValue + "%";
 
-            //encrease timer
-            timer++;
-
-            if (timer > 13) {
-                timer = 0;
+            //check if 3 secounds are over
+            var date2 = new Date();
+            if (date2.getTime() > timer + 3000) {
+                timer = date2.getTime();
                 console.log(counter);
                 switch (counter) {
                     case 0:
@@ -155,7 +172,7 @@ window.onload = () => {
                     case 17:
                         var giphys = document.getElementById('gif');
                         giphys.src = "/Giphys/anoying-cat.jpg";
-    
+
                         counter++;
                         break;
                     case 18:
@@ -200,11 +217,44 @@ window.onload = () => {
                 lachometer.style.color = 'red';
                 perCent.style.backgroundColor = 'red';
             } else {
+                //change the design
                 const x = document.getElementById('x');
                 x.innerText = 'Verloren';
                 x.style.color = 'red';
                 perCent.style.backgroundColor = 'red';
+                perCent.style.color = 'white';
+
+                //calculating the time to laugh
+                var secounds = (Math.floor((new Date().getTime() - timeStart) / 10)) / 100;
+                if (secounds > 60) {
+                    var minutes = Math.floor(secounds / 60);
+                    secounds = Math.round(secounds - (minutes * 60));
+                    if (minutes > 1) {
+                        perCent.innerText = minutes + " Minuten und " + secounds + " Sekunden";
+                    } else {
+                        perCent.innerText = minutes + " Minute und " + secounds + " Sekunden";
+                    }
+                } else {
+                    perCent.innerText = secounds + " Sekunden";
+                }
             }
         }
     });
+}
+
+function showHighscores() {
+    //delete last highscores
+    var element = document.getElementById('highscoreList');
+    element.innerHTML = '';
+
+    //show new highscores
+    for (let i = 0; i < highscores.length; i++) {
+        //create Elements
+        var list = document.getElementById('highscoreList');
+        var memberOfList = document.createElement('div');
+        var text = document.createTextNode(highscores[i][0] + highscores[i][1] + 'sec.')
+
+        memberOfList.appendChild(text);
+        list.appendChild(memberOfList);
+    }
 }
