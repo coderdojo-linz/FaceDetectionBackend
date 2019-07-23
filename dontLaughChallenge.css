@@ -1,7 +1,7 @@
 body{
     text-align: center;
     position: relative;
-    top: 10rem;
+    top: 2rem;
     text-align: center;
 }
 
@@ -25,11 +25,11 @@ body{
 
 #gif{
     position: relative;
-    top: 3.4rem;
+    top: 3rem;
 }
 
 #highscoreList {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1rem;
+    right: 5rem;
 }
