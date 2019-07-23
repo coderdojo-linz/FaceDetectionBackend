@@ -7,14 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Face Detection</title>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="dontLaughChallenge.js"></script>
+    <script src="detection-result.js"></script>
     <link rel="stylesheet" href="dontLaughChallenge.css">
 </head>
 
 <body>
-    <h2 id="x">Lachometer: <span id='lachometer'></span></h2>
-    <div id="temp"><div id='percent'></div></div>
-    <img id="gif">
+    <h2 id='x'>Lachometer: <span id='lachometer'></span></h2>
+    <div id='temp'>
+        <div id='percent'></div>
+    </div>
+    <img id='gif'>
+    <div id='highscoreList'></div>
 </body>
 
 </html>
