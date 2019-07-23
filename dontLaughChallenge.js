@@ -1,8 +1,6 @@
 const socket = io();
 
-
 var dateStart = new Date();
-
 var timeStart = dateStart.getTime();
 var timer = dateStart.getTime() - 3000;
 var counter = 0;
@@ -18,7 +16,7 @@ var highscores = [
 
 window.onload = () => {
     socket.on('detection', function (msg) {
-        msg = JSON.parse(msg);  
+        msg = JSON.parse(msg);
 
         if (document.getElementById('highscoreList')) {
             showHighscores();
@@ -27,11 +25,13 @@ window.onload = () => {
         if (document.getElementById('lachometer')) {
             //show Lachometer
             const lachometer = document.getElementById('lachometer');
-            let happyValue = msg.expressions.happy * 100;
+            //* 1.333 because you lose at 75%
+            let happyValue = msg.expressions.happy * 100 * 1.333;
             lachometer.innerText = `${Math.round(happyValue)} %`;
 
             var perCent = document.getElementById('percent');
-            perCent.style.width = happyValue + "%";
+            //checks that width cannot be over 100%
+            perCent.style.width = happyValue > 100 ? 100 + '%' : happyValue + '%';
 
             //check if 3 secounds are over
             var date2 = new Date();
@@ -203,7 +203,7 @@ window.onload = () => {
             } else if (happyValue < 75) {
                 lachometer.style.color = 'yellow';
                 perCent.style.backgroundColor = 'yellow';
-            } else if (happyValue < 98) {
+            } else if (happyValue < 100) {
                 lachometer.style.color = 'red';
                 perCent.style.backgroundColor = 'red';
             } else {
@@ -247,6 +247,7 @@ function showHighscores() {
         var memberOfList = document.createElement('div');
         var text = document.createTextNode(highscores[i][0] + ': ' + highscores[i][1] + ' sec.')
 
+        //insert elements in html
         memberOfList.appendChild(text);
         list.appendChild(memberOfList);
     }
@@ -265,5 +266,4 @@ function addScore(score) {
         //deletes last element
         highscores.splice(5);
     }
-
 }
