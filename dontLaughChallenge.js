@@ -7,11 +7,11 @@ var counter = 0;
 
 //list of the best players, first variable: name, secound variable: secounds
 var highscores = [
-    ["temp", 0.0],
-    ["temp", 0.0],
-    ["temp", 0.0],
-    ["temp", 0.0],
-    ["temp", 0.0]
+    ["Björn", 83.51],
+    ["Alex", 31.82],
+    ["Melina", 18.50],
+    ["Sebastian", 13.56],
+    ["Chantal", 0.12]
 ];
 
 window.onload = () => {
