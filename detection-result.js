@@ -18,7 +18,7 @@ var highscores = [
 
 window.onload = () => {
     socket.on('detection', function (msg) {
-        msg = JSON.parse(msg);
+        msg = JSON.parse(msg);  
 
         if (document.getElementById('position')) {
             const position = document.getElementById('position');
@@ -31,7 +31,6 @@ window.onload = () => {
         }
 
         if (document.getElementById('highscoreList')) {
-            //show Highscores
             showHighscores();
         }
 
@@ -172,13 +171,8 @@ window.onload = () => {
                         break;
                     case 17:
                         var giphys = document.getElementById('gif');
-<<<<<<< HEAD
                         giphys.src = "/Giphys/anoying-cat.jpg";
 
-=======
-                        giphys.src = baseUrl + "/Giphys/anoying-cat.jpg";
-    
->>>>>>> 32905b3bda6a350b336d7b4f49b02d039fa06aa5
                         counter++;
                         break;
                     case 18:
@@ -232,8 +226,9 @@ window.onload = () => {
 
                 //calculating the time to laugh
                 var secounds = (Math.floor((new Date().getTime() - timeStart) / 10)) / 100;
+                var minutes = 0;
                 if (secounds > 60) {
-                    var minutes = Math.floor(secounds / 60);
+                    minutes = Math.floor(secounds / 60);
                     secounds = Math.round(secounds - (minutes * 60));
                     if (minutes > 1) {
                         perCent.innerText = minutes + " Minuten und " + secounds + " Sekunden";
@@ -243,6 +238,8 @@ window.onload = () => {
                 } else {
                     perCent.innerText = secounds + " Sekunden";
                 }
+                addScore((secounds + (minutes * 60)));
+                showHighscores();
             }
         }
     });
@@ -258,9 +255,25 @@ function showHighscores() {
         //create Elements
         var list = document.getElementById('highscoreList');
         var memberOfList = document.createElement('div');
-        var text = document.createTextNode(highscores[i][0] + highscores[i][1] + 'sec.')
+        var text = document.createTextNode(highscores[i][0] + ': ' + highscores[i][1] + ' sec.')
 
         memberOfList.appendChild(text);
         list.appendChild(memberOfList);
     }
+}
+
+function addScore(score) {
+    //check if score is a highscore
+    if (score > highscores[4][1]) {
+        //add name and score to array
+        var name = prompt('Please enter your name');
+        highscores.push([name, score]);
+
+        //sort array by score
+        highscores.sort((a, b) => (a[1] < b[1]) ? 1 : -1);
+
+        //deletes last element
+        highscores.splice(5);
+    }
+
 }
