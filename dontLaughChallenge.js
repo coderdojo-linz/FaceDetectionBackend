@@ -44,7 +44,7 @@ window.onload = () => {
 
                     case 1:
                         var giphys = document.getElementById('gif');
-                        giphys.src = baseUrl + "/Giphys/car-strache.png";
+                        giphys.src = baseUrl + "/Giphys/car-strache.xcf";
 
                         counter++;
                         break;
