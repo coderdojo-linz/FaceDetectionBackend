@@ -256,9 +256,9 @@ function showHighscores() {
 function addScore(score) {
     //check if score is a highscore
     if (score > highscores[4][1]) {
-        //add name and score to array
+        //add name and score to array if name is not null or empty string
         var name = prompt('Please enter your name');
-        highscores.push([name, score]);
+        if (name !== '' && name !== null) highscores.push([name, score]);
 
         //sort array by score
         highscores.sort((a, b) => (a[1] < b[1]) ? 1 : -1);
