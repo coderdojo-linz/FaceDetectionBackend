@@ -15,7 +15,7 @@ var highscores = [
 window.onload = () => {
     socket.on('detection', function (msg) {
         msg = JSON.parse(msg);
-        document.getElementById("thediv").style.visibility = "hidden";
+        
 
         if (document.getElementById('highscoreList')) {
             showHighscores();
