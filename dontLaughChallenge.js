@@ -15,6 +15,7 @@ var highscores = [
 window.onload = () => {
     socket.on('detection', function (msg) {
         msg = JSON.parse(msg);
+        document.getElementById("thediv").style.visibility = "hidden";
 
         if (document.getElementById('highscoreList')) {
             showHighscores();
@@ -31,7 +32,7 @@ window.onload = () => {
             //checks that width cannot be over 100%
             perCent.style.width = happyValue > 100 ? 100 + '%' : happyValue + '%';
 
-            //check if 3 secounds are over
+            //set date
             var date2 = new Date();
             timer = date2.getTime();
             const baseUrl = 'https://cddataexchange.blob.core.windows.net/data-exchange';    
@@ -71,6 +72,8 @@ window.onload = () => {
                 } else {
                     perCent.innerText = secounds + " seconds";
                 }
+
+                document.getElementById("thediv").style.visibility = "visible";
                 addScore((secounds + (minutes * 60)));
                 showHighscores();
             }
