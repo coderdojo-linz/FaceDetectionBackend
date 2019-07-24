@@ -24,8 +24,13 @@ body{
 }
 
 #audio{
-    right: 20rem;
+    text-align: center;
     top: 5rem;
+}
+
+#video{
+    text-align: center;
+    top: 1rem;
 }
 
 #highscoreList {
