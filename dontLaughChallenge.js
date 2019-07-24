@@ -33,13 +33,9 @@ window.onload = () => {
 
             //check if 3 secounds are over
             var date2 = new Date();
-            if (date2.getTime() > timer + 3000) {
-                timer = date2.getTime();
-                console.log(counter);
-                const baseUrl = 'https://cddataexchange.blob.core.windows.net/data-exchange';
-                
-            }
-
+            timer = date2.getTime();
+            const baseUrl = 'https://cddataexchange.blob.core.windows.net/data-exchange';    
+            
             //check how happy you are
             if (happyValue < 25) {
                 lachometer.style.color = 'lightgreen';
