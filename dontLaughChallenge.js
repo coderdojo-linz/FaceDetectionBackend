@@ -73,7 +73,6 @@ window.onload = () => {
                     perCent.innerText = secounds + " seconds";
                 }
 
-                document.getElementById("thediv").style.visibility = "visible";
                 addScore((secounds + (minutes * 60)));
                 showHighscores();
             }
