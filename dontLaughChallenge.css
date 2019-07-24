@@ -23,16 +23,6 @@ body{
     padding-top: 20px;
 }
 
-#audio{
-    text-align: center;
-    top: 5rem;
-}
-
-#video{
-    text-align: center;
-    top: 1rem;
-}
-
 #highscoreList {
     position: absolute;
     top: 15rem;
