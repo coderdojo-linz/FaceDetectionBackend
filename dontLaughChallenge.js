@@ -15,7 +15,6 @@ var highscores = [
 window.onload = () => {
     socket.on('detection', function (msg) {
         msg = JSON.parse(msg);
-        
 
         if (document.getElementById('highscoreList')) {
             showHighscores();
