@@ -63,7 +63,7 @@ window.onload = () => {
                     minutes = Math.floor(secounds / 60);
                     secounds = Math.round(secounds - (minutes * 60));
                     if (minutes > 1) {
-                        perCent.innerText = minutes + " minutes and" + secounds + " seconds";
+                        perCent.innerText = minutes + " minutes and " + secounds + " seconds";
                     } else {
                         perCent.innerText = minutes + " minutes and " + secounds + " seconds";
                     }
