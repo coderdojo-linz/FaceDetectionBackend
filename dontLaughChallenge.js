@@ -52,7 +52,7 @@ window.onload = () => {
             } else {
                 //change the design
                 const x = document.getElementById('x');
-                x.innerText = 'Verloren';
+                x.innerText = 'Lost';
                 x.style.color = 'red';
                 perCent.style.backgroundColor = 'red';
                 perCent.style.color = 'white';
@@ -64,12 +64,12 @@ window.onload = () => {
                     minutes = Math.floor(secounds / 60);
                     secounds = Math.round(secounds - (minutes * 60));
                     if (minutes > 1) {
-                        perCent.innerText = minutes + " Minuten und " + secounds + " Sekunden";
+                        perCent.innerText = minutes + " minutes and" + secounds + " seconds";
                     } else {
-                        perCent.innerText = minutes + " Minute und " + secounds + " Sekunden";
+                        perCent.innerText = minutes + " minutes and " + secounds + " seconds";
                     }
                 } else {
-                    perCent.innerText = secounds + " Sekunden";
+                    perCent.innerText = secounds + " seconds";
                 }
                 addScore((secounds + (minutes * 60)));
                 showHighscores();
