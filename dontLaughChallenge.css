@@ -22,3 +22,7 @@ body{
     height: 40px;
     padding-top: 20px;
 }
+
+audio{
+    margin-top: -5rem;
+}
