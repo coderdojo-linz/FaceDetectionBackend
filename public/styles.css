@@ -1,0 +1,47 @@
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.side-by-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.side-by-side >* {
+  margin: 0 5px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.margin {
+  margin: 20px;
+}
+
+#face2, #face1 {
+  width: 150px;
+}
+
+.camera {
+  position: relative;
+  left: 0;
+}
+
+#startbutton{
+  margin: 30px;
+  background-color: transparent;
+  padding: 10px 0 10px 0;
+  border: none;
+  border-bottom: solid #9e9e9e 1px;
+  color: black;
+}
+
+#output{
+  height: 270px;
+}
+
