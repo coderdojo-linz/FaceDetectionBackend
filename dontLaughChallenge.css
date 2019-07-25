@@ -22,9 +22,3 @@ body{
     height: 40px;
     padding-top: 20px;
 }
-
-#highscoreList {
-    position: absolute;
-    top: 15rem;
-    right: 5rem;
-}

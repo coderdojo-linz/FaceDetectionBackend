@@ -3,22 +3,11 @@ var timeStart = dateStart.getTime();
 var timer = dateStart.getTime() - 3000;
 var counter = 0;
 
-//list of the best players, first variable: name, secound variable: secounds
-var highscores = [
-    ["temp", 0.0],
-    ["temp", 0.0],
-    ["temp", 0.0],
-    ["temp", 0.0],
-    ["temp", 0.0]
-];
 
 window.onload = () => {
     socket.on('detection', function (msg) {
         msg = JSON.parse(msg);
-        if (document.getElementById('highscoreList')) {
-            showHighscores();
-        }
-
+        
         if (document.getElementById('lachometer')) {
             //show Lachometer
             const lachometer = document.getElementById('lachometer');
@@ -70,43 +59,7 @@ window.onload = () => {
                 } else {
                     perCent.innerText = secounds + " seconds";
                 }
-
-                addScore((secounds + (minutes * 60)));
-                showHighscores();
             }
         }
     });
-}
-
-function showHighscores() {
-    //delete last highscores
-    var element = document.getElementById('highscoreList');
-    element.innerHTML = '';
-
-    //show new highscores
-    for (let i = 0; i < highscores.length; i++) {
-        //create Elements
-        var list = document.getElementById('highscoreList');
-        var memberOfList = document.createElement('div');
-        var text = document.createTextNode(highscores[i][0] + ': ' + highscores[i][1] + ' sec.')
-
-        //insert elements in html
-        memberOfList.appendChild(text);
-        list.appendChild(memberOfList);
-    }
-}
-
-function addScore(score) {
-    //check if score is a highscore
-    if (score > highscores[4][1]) {
-        //add name and score to array if name is not null or empty string
-        var name = prompt('Please enter your name');
-        if (name !== '' && name !== null) highscores.push([name, score]);
-
-        //sort array by score
-        highscores.sort((a, b) => (a[1] < b[1]) ? 1 : -1);
-
-        //deletes last element
-        highscores.splice(5);
-    }
 }
