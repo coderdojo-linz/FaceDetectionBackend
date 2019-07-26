@@ -39,11 +39,20 @@
     <div class="camera">
       <video id="video">Video stream not available.</video>
     </div>
-    <button id="startbutton">Take photo</button>
+    <div id="buttons">
+      <button id="startbutton1">Take photo 1</button>
+      <button id="startbutton2">Take photo 2</button>
+    </div>
     <canvas id="canvas" style="width: 0; height: 0;">
     </canvas>
-    <div id="output">
-      <!--There will be an img element if you click on the 'Take photo' button-->
+    <div id="outputs">
+      <div id="output">
+        <!--There will be an img element if you click on the 'Take photo' button-->
+      </div>
+
+      <div id="output1">
+        <!--There will be an img element if you click on the 'Take photo' button-->
+      </div>
     </div>
 
   </div>
@@ -66,9 +75,14 @@
     }
 
     async function onSelectionChanged(which, uri) {
-      if (uri === '/images/Webcam Picture/Webcam Picture.png') {
+      if (uri === '/images/Webcam Picture/Webcam Picture1.png' || uri === '/images/Webcam Picture/Webcam Picture2.png') {
         const imgEl = $(`#face${which}`).get(0)
-        const webcamPicture = document.getElementById('photo');
+        var webcamPicture;
+        if (uri === '/images/Webcam Picture/Webcam Picture1.png') {
+          webcamPicture = document.getElementById('photo');
+        } else {
+          webcamPicture = document.getElementById('photo1');
+        }
         imgEl.src = webcamPicture.src;
         descriptors[`desc${which}`] = await faceapi.computeFaceDescriptor(webcamPicture)
       } else {

@@ -32,16 +32,34 @@
   left: 0;
 }
 
-#startbutton{
+#startbutton1, #startbutton2{
   margin: 30px;
   background-color: transparent;
   padding: 10px 0 10px 0;
   border: none;
   border-bottom: solid #9e9e9e 1px;
   color: black;
+} 
+
+#output > img{
+  margin-right: 56px;
 }
 
-#output{
-  height: 270px;
+#output, #output1{
+  display: inline;
 }
+
+
+#outputs{
+  width: 700px;
+  margin: 1.2rem 0 3rem 0;
+}
+
+@media (max-width: 800px){
+  *{
+    display: none;
+  }
+}
+
+
 

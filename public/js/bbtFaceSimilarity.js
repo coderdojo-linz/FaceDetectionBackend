@@ -17,14 +17,17 @@
     var video = null;
     var canvas = null;
     var photo = null;
-    var startbutton = null;
+    var startbutton1 = null;
     var output = null;
+    var output1 = null;
 
     function startup() {
         video = document.getElementById('video');
         canvas = document.getElementById('canvas');
         output = document.getElementById('output');
-        startbutton = document.getElementById('startbutton');
+        output1 = document.getElementById('output1');
+        startbutton1 = document.getElementById('startbutton1');
+        startbutton2 = document.getElementById('startbutton2');
 
         navigator.mediaDevices.getUserMedia({ video: true, audio: false })
             .then(function (stream) {
@@ -54,8 +57,13 @@
             }
         }, false);
 
-        startbutton.addEventListener('click', function (ev) {
-            takepicture();
+        startbutton1.addEventListener('click', function (ev) {
+            takepicture(1);
+            ev.preventDefault();
+        }, false);
+
+        startbutton2.addEventListener('click', function (ev) {
+            takepicture(2);
             ev.preventDefault();
         }, false);
     }
@@ -78,23 +86,65 @@
     // drawing that to the screen, we can change its size and/or apply
     // other changes before drawing it.
 
-    function takepicture() {
-        //delete old img if there is one
-        //create img element
+    function takepicture(numberOfPicture) {
+        var newPhoto = document.createElement('img');
+        if (numberOfPicture === 1) {
+            if (document.getElementById('photo') !== null) {
+                var element = document.getElementById('photo');
+                output.replaceChild(newPhoto, element);
+            }
+            newPhoto.setAttribute('id', 'photo');
+            output.appendChild(newPhoto);
+        } else {
+            if (document.getElementById('photo1') !== null) {
+                var element = document.getElementById('photo1');
+                output1.replaceChild(newPhoto, element);
+            }
+            newPhoto.setAttribute('id', 'photo1');
+            output1.appendChild(newPhoto);
+        }
+
+
+
+
+
+
+
+
+/*
         var photo = document.createElement('img');
-        photo.setAttribute('id', 'photo');
-        output.innerHTML = '';
-        output.appendChild(photo);
+        if (changePhoto) {
+            if (document.getElementById('photo') !== null) {
+                var element = document.getElementById('photo');
+                output.replaceChild(photo, element);
+            }
+
+
+            photo.setAttribute('id', 'photo');
+            output.appendChild(photo);
+        } else {
+            if (document.getElementById('photo1') !== null) {
+                var element = document.getElementById('photo1');
+                output.replaceChild(photo, element);
+
+
+            }
+
+            photo.setAttribute('id', 'photo1');
+            output.appendChild(photo);
+        } */
 
         var context = canvas.getContext('2d');
         if (width && height) {
             canvas.width = width;
             canvas.height = height;
             context.drawImage(video, 0, 0, width, height);
-
-            var data = canvas.toDataURL('/images/image/image.png');
-            photo.setAttribute('src', data);
-
+            if (numberOfPicture === 1) {
+                var data = canvas.toDataURL('/images/Webcam Image/Webcam Image1.png');
+            } else {
+                var data = canvas.toDataURL('/images/Webcam Image/Webcam Image1.png');
+            }
+            newPhoto.setAttribute('src', data);
         } else {
             clearphoto();
         }

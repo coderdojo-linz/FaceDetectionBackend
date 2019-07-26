@@ -5,13 +5,16 @@ function getFaceImageUri(className, idx) {
     return `/images/${className}/${className}${idx}.jpg`;
   } else if (className !== 'Webcam Picture') {
     return `/images/${className}/${className}${idx}.png`;
-  } else if(className === 'Webcam Picture' && idx === 1){
-    return `/images/${className}/${className}.png`;
+  } else if (className === 'Webcam Picture' && idx === 1) {
+    return `/images/${className}/${className}1.png`;
+  } else if (className === 'Webcam Picture' && idx === 2) {
+    return `/images/${className}/${className}2.png`;
   }
+
 }
 
 function renderFaceImageSelectList(selectListId, onChange, initialValue) {
-  const indices = initialValue.className === 'image' ? [1] : [1, 2, 3, 4, 5];
+  const indices = initialValue.className === 'image' ? [1, 2] : [1, 2, 3, 4, 5];
   function renderChildren(select) {
     classes.forEach(className => {
       const optgroup = document.createElement('optgroup');
@@ -35,7 +38,7 @@ function renderFaceImageSelectList(selectListId, onChange, initialValue) {
 
 // fetch first image of each class and compute their descriptors
 async function createBbtFaceMatcher(numImagesForTraining = 1) {
-  const maxAvailableImagesPerClass = iniftialValue.className === 'image' ? 1 : 5; 
+  const maxAvailableImagesPerClass = iniftialValue.className === 'image' ? 2 : 5;
   numImagesForTraining = Math.min(numImagesForTraining, maxAvailableImagesPerClass);
 
   const labeledFaceDescriptors = await Promise.all(classes.map(
