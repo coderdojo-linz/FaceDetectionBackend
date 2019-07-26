@@ -83,7 +83,9 @@
         } else {
           webcamPicture = document.getElementById('photo1');
         }
-        imgEl.src = webcamPicture.src;
+        if (webcamPicture) {
+          imgEl.src = webcamPicture.src;
+        }
         descriptors[`desc${which}`] = await faceapi.computeFaceDescriptor(webcamPicture)
 
         updateResult();
@@ -110,7 +112,7 @@
           await onSelectionChanged(1, uri)
           updateResult()
         },
-        { className: 'sheldon', imageIdx: 1 }
+        { className: 'Webcam Picture', imageIdx: 1 }
       )
 
       renderFaceImageSelectList(
@@ -119,7 +121,7 @@
           await onSelectionChanged(2, uri)
           updateResult()
         },
-        { className: 'howard', imageIdx: 1 }
+        { className: 'Webcam Picture', imageIdx: 2 }
       )
       run()
     })

@@ -87,7 +87,6 @@
     // other changes before drawing it.
 
     function takepicture(numberOfPicture) {
-        console.log('take picture');
         var newPhoto = document.createElement('img');
         var uri;
         if (numberOfPicture === 1) {

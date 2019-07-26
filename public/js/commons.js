@@ -1,4 +1,4 @@
-async function requestExternalImage(imageUrl) {
+/*async function requestExternalImage(imageUrl) {
   const res = await fetch('fetch_external_image', {
     method: 'post',
     headers: {
@@ -20,14 +20,10 @@ async function requestExternalImage(imageUrl) {
     console.error('error:', e);
     throw new Error('failed to load image from url: ' + imageUrl);
   }
-}
+}*/
 
 function renderNavBar(navbarId, exampleUri) {
   const examples = [
-    {
-      uri: 'bbt_face_matching',
-      name: 'BBT Face Matching'
-    },
     {
       uri: 'bbt_face_similarity',
       name: 'BBT Face Similarity'
@@ -54,7 +50,6 @@ function renderSelectList(selectListId, onChange, initialValue, renderChildren) 
 
 function renderOption(parent, text, value) {
   if (value !== undefined) {
-    text = text === 'Webcam Picture 1' ? text = 'Webcam Picture' : text;
     //creates option element and puts it into the list
     const option = document.createElement('option');
     option.innerHTML = text;

@@ -1,7 +1,6 @@
 async function onSelectedImageChanged(uri) {
   const img = await faceapi.fetchImage(uri)
   $(`#inputImg`).get(0).src = img.src
-  console.log(img.src);
   updateResults()
 }
 
@@ -12,19 +11,7 @@ async function loadImageFromUrl(url) {
 }
 
 function renderImageSelectList(selectListId, onChange, initialValue, withFaceExpressionImages) {
-  let images = [1, 2, 3, 4, 5, 6, 7].map(idx => `bbt${idx}.jpg`) //change if you add more classes
-
-  if (withFaceExpressionImages) {
-    images = [
-      'happy.jpg',
-      'sad.jpg',
-      'angry.jpg',
-      'disgusted.jpg',
-      'surprised.jpg',
-      'fearful.jpg',
-      'neutral.jpg'
-    ].concat(images)
-  }
+  let images = [1, 2].map(idx => `bbt${idx}.jpg`) //change if you add more classes
 
   function renderChildren(select) {
     images.forEach(imageName =>
