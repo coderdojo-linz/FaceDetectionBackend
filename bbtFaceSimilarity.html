@@ -61,9 +61,9 @@
     let descriptors = { desc1: null, desc2: null }
 
     function updateResult() {
-      const distance = faceapi.round(
-        faceapi.euclideanDistance(descriptors.desc1, descriptors.desc2)
-      )
+        const distance = faceapi.round(
+          faceapi.euclideanDistance(descriptors.desc1, descriptors.desc2)
+        )
       let text = distance
       let bgColor = '#ffffff'
       if (distance > threshold) {
@@ -75,7 +75,7 @@
     }
 
     async function onSelectionChanged(which, uri) {
-      if (uri === '/images/Webcam Picture/Webcam Picture1.png' || uri === '/images/Webcam Picture/Webcam Picture2.png') {
+      if (uri != null) {
         const imgEl = $(`#face${which}`).get(0)
         var webcamPicture;
         if (uri === '/images/Webcam Picture/Webcam Picture1.png') {
@@ -85,19 +85,20 @@
         }
         imgEl.src = webcamPicture.src;
         descriptors[`desc${which}`] = await faceapi.computeFaceDescriptor(webcamPicture)
-      } else {
-        const input = await faceapi.fetchImage(uri)
-        const imgEl = $(`#face${which}`).get(0)
-        imgEl.src = input.src
-        descriptors[`desc${which}`] = await faceapi.computeFaceDescriptor(input)
+
+        updateResult();
       }
     }
 
     async function run() {
       await faceapi.loadFaceRecognitionModel('/weights/')
       $('#loader').hide()
-      await onSelectionChanged(1, $('#selectList1 select').val())
-      await onSelectionChanged(2, $('#selectList2 select').val())
+      if ($('#selectList1 select').val()) {
+        await onSelectionChanged(1, $('#selectList1 select').val())
+      }
+      if ($('#selectList2 select').val()) {
+        await onSelectionChanged(2, $('#selectList2 select').val())
+      }
       updateResult()
     }
 

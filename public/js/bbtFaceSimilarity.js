@@ -87,7 +87,9 @@
     // other changes before drawing it.
 
     function takepicture(numberOfPicture) {
+        console.log('take picture');
         var newPhoto = document.createElement('img');
+        var uri;
         if (numberOfPicture === 1) {
             if (document.getElementById('photo') !== null) {
                 var element = document.getElementById('photo');
@@ -95,6 +97,7 @@
             }
             newPhoto.setAttribute('id', 'photo');
             output.appendChild(newPhoto);
+            uri = '/images/Webcam Picture/Webcam Picture1.png';
         } else {
             if (document.getElementById('photo1') !== null) {
                 var element = document.getElementById('photo1');
@@ -102,37 +105,8 @@
             }
             newPhoto.setAttribute('id', 'photo1');
             output1.appendChild(newPhoto);
+            uri = '/images/Webcam Picture/Webcam Picture2.png';
         }
-
-
-
-
-
-
-
-
-/*
-        var photo = document.createElement('img');
-        if (changePhoto) {
-            if (document.getElementById('photo') !== null) {
-                var element = document.getElementById('photo');
-                output.replaceChild(photo, element);
-            }
-
-
-            photo.setAttribute('id', 'photo');
-            output.appendChild(photo);
-        } else {
-            if (document.getElementById('photo1') !== null) {
-                var element = document.getElementById('photo1');
-                output.replaceChild(photo, element);
-
-
-            }
-
-            photo.setAttribute('id', 'photo1');
-            output.appendChild(photo);
-        } */
 
         var context = canvas.getContext('2d');
         if (width && height) {
@@ -145,6 +119,7 @@
                 var data = canvas.toDataURL('/images/Webcam Image/Webcam Image1.png');
             }
             newPhoto.setAttribute('src', data);
+            onSelectionChanged(numberOfPicture, uri);
         } else {
             clearphoto();
         }
