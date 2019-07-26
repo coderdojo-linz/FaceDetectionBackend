@@ -7,17 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Face Detection</title>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="detection-result.js"></script>
     <script src="dontLaughChallenge.js"></script>
     <link rel="stylesheet" href="dontLaughChallenge.css">
 </head>
 
 <body>
-    <h2 id='x'>Lachometer: <span id='lachometer'></span></h2>
+    <h2 id='x'>Laughing Scale: <span id='lachometer'></span></h2>
     <div id='temp'>
         <div id='percent'></div>
     </div>
-    <img id='gif'>
-    <div id='highscoreList'></div>
+    
+    <video width="500" height="420" muted autoplay controls>
+        <source src="https://cddataexchange.blob.core.windows.net/data-exchange/dont-laugh-challenge-videos/BestAnimalFails.mp4" type="video/mp4">  
+    </video><br><br>
+    <audio id="audio" autoplay loop controls>
+        <source src="https://cddataexchange.blob.core.windows.net/data-exchange/music/If_I_Had_a_Chicken.mp3" type="audio/mpeg">
+    </audio>
+
 </body>
 
 </html>

@@ -14,4 +14,4 @@ window.onload = () => {
             pid.innerText = msg.player;
         }
     });
-}
+};
